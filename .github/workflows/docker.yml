@@ -115,7 +115,6 @@ jobs:
           build-args: |
             BITNAMI_TAG=${{ matrix.bitnami-postgresql }}
             PGVECTORS_TAG=${{ matrix.pgvectors }}
-            PG_MAJOR=${{ steps.version.outputs.pg_major }}
             TARGETARCH=${{ matrix.platform }}
 
   results:
