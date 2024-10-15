@@ -79,7 +79,7 @@ jobs:
             if (context.eventName == "workflow_dispatch") return true;
             return "${{ steps.changed-version.outputs.any_changed }}" == "true";
         
-      - name: Set major postgres version
+      - name: Set versions
         id: version
         run: |
           pg_major=$(echo ${{ matrix.bitnami-postgresql }} | cut -d'.' -f1)
@@ -96,7 +96,7 @@ jobs:
             latest=false
           images: |
             name=ghcr.io/${{ github.repository }}
-            name=pixil/bitnami-postgresql-immich
+            name=pixil/bitnami-postgresql-pgvecto-rs
           tags: |
             type=raw,value=${{ matrix.bitnami-postgresql }},enable=${{ steps.should-release.outputs.result }}
             type=raw,value=${{ steps.version.outputs.pg_patch }},enable=${{ steps.should-release.outputs.result }}
@@ -106,7 +106,7 @@ jobs:
         uses: docker/build-push-action@v6.9.0
         with:
           context: .
-          platforms: linux/amd64,linux/arm64
+          platforms: ${{ matrix.platform }}
           push: ${{ !github.event.pull_request.head.repo.fork && steps.metadata.outputs.tags != '' }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
@@ -115,6 +115,8 @@ jobs:
           build-args: |
             BITNAMI_TAG=${{ matrix.bitnami-postgresql }}
             PGVECTORS_TAG=${{ matrix.pgvectors }}
+            PG_MAJOR=${{ steps.version.outputs.pg_major }}
+            TARGETARCH=${{ matrix.platform }}
 
   results:
       if: ${{ always() }}
