@@ -1,5 +1,4 @@
 ARG PGVECTORS_TAG
-ARG TARGETARCH
 ARG BITNAMI_TAG
 FROM tensorchord/pgvecto-rs-binary:pg${BITNAMI_TAG%%.*}-${PGVECTORS_TAG}-${TARGETARCH} AS pgvectors
 FROM debian:bullseye-slim AS builder

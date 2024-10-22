@@ -8,6 +8,3 @@ bitnami-postgresql:
 pgvectors:
   # renovate: datasource=github-releases depName=tensorchord/pgvecto.rs
   - "v0.3.0"
-platform:
-  - "amd64"
-  - "arm64"

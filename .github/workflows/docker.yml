@@ -106,7 +106,7 @@ jobs:
         uses: docker/build-push-action@v6.9.0
         with:
           context: .
-          platforms: ${{ matrix.platform }}
+          platforms: linux/amd64,linux/arm64
           push: ${{ !github.event.pull_request.head.repo.fork && steps.metadata.outputs.tags != '' }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
@@ -115,7 +115,6 @@ jobs:
           build-args: |
             BITNAMI_TAG=${{ matrix.bitnami-postgresql }}
             PGVECTORS_TAG=${{ matrix.pgvectors }}
-            TARGETARCH=${{ matrix.platform }}
 
   results:
       if: ${{ always() }}
