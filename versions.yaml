@@ -1,10 +1,10 @@
 bitnami-postgresql:
   # renovate: datasource=docker depName=bitnami/postgresql
-  - "14.13.0-debian-12-r18"
+  - "14.13.0-debian-12-r19"
   # renovate: datasource=docker depName=bitnami/postgresql
-  - "15.8.0-debian-12-r19"
+  - "15.8.0-debian-12-r20"
   # renovate: datasource=docker depName=bitnami/postgresql
-  - "16.4.0-debian-12-r20"
+  - "16.4.0-debian-12-r21"
 pgvectors:
   # renovate: datasource=github-releases depName=tensorchord/pgvecto.rs
   - "v0.3.0"
