@@ -1,6 +1,6 @@
 bitnami-postgresql:
   # renovate: datasource=docker depName=bitnami/postgresql
-  - "14.16.0-debian-12-r0"
+  - "14.16.0-debian-12-r1"
   # renovate: datasource=docker depName=bitnami/postgresql
   - "15.10.0-debian-12-r2"
   # renovate: datasource=docker depName=bitnami/postgresql
